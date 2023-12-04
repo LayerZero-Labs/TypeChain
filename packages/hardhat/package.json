@@ -26,6 +26,8 @@
     "lint:fix": "pnpm lint --fix",
     "typecheck": "tsc --noEmit --incremental false --composite false",
     "clean": "rm -rf dist && rm -f tsconfig.build.tsbuildinfo",
+    "prepack": "sed -i'.bak' 's,@typechain/hardhat\",@layerzerolabs/typechain-hardhat\",' package.json",
+    "postpack": "sed -i'.bak' 's,@layerzerolabs/typechain-hardhat\",@typechain/hardhat\",' package.json && rm package.json.bak",
     "test": "mocha --config ../../.mocharc.js",
     "test:fix": "pnpm lint:fix && pnpm format:fix && pnpm test && pnpm typecheck"
   },
